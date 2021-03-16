@@ -13,7 +13,10 @@ print('Daniel Lindberg, dlind16@student.sdu.dk')
 print('Emilie Bruun Therp, emthe15@student.sdu.dk')
 
 #%% Imports
-# Soon
+import os
+#import pandas as pd
+import json # To work with json files
+from textblob import TextBlob # To do Naïve Bayes classifification
 
 #%% Enviroment
 # Nothing yet
