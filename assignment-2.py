@@ -63,6 +63,7 @@ for person in icoData:
 # Filter end-dates after 19-10-2018
 
 #%% Excersice 1
+pprint.pprint("")
 
 #%% Excersice 2
 
