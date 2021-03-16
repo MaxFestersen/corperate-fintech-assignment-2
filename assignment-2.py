@@ -24,10 +24,9 @@ os.chdir(os.path.dirname(os.path.realpath(__file__))) # Set dir
 filename = 'icoData_19092018.json'
 
 with open(filename) as json_data:
-    icoData = json.load(json_data)
+    icoData = json.load(json_data) #Load data into a list
 
-print(icoData)
-#icoData = [x for x in icoData if not len(x) == 1]
+icoData = [x for x in icoData if not len(x) == 1] # ???
 
 
 
