@@ -15,10 +15,10 @@ print('Emilie Bruun Therp, emthe15@student.sdu.dk')
 #%% Imports
 import os # To set dir
 import pprint # To print "stuff" pretty
-#import pandas as pd
+import pandas as pd
 import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
-from datetime import datetime
+from datetime import datetime # To format strings as dates
 
 
 #%% Enviroment and Data imports
@@ -39,28 +39,27 @@ icoDataFiltReviewNum = []
 i = 0
 personNum = 0
 reviewNum = 0
+# Loop all of icoData
 for person in icoData:
     personNum += 1 # Count next person
+    # Filter end-dates after 19-10-2018
     endDate = person['dates']["icoEnd"].split(" ")[0]
     if endDate != '0000-00-00' and datetime.strptime(endDate, "%Y-%m-%d") < datetime.strptime("2018-10-19", "%Y-%m-%d"):
-        print(endDate)
-        print(i)
-        validDate = True
+        validDate = True # If the date is a valid date, and before 2018-10-19
     else:
         validDate = False
     if validDate:
         for rating in person['ratings']:
             if "review" in rating and len(rating["review"]) > 0:
                 reviewNum += 1 # Count valid review
+                # Save ratings review instance
                 icoDataFiltPersonNum.append(personNum)
                 icoDataFiltReviewNum.append(reviewNum)
                 icoDataFiltReview.append(rating['review'])
     i+=1 # Increment instance counter
-#Loop all of icoData
-# Save dates - dates -> icoEnd
-# Save ratings review - ratings -> review
+
 # Format as dataframe
-# Filter end-dates after 19-10-2018
+reviewDt = pd.DataFrame({'#review': icoDataFiltReviewNum,'Person ID': icoDataFiltPersonNum, 'Review':icoDataFiltReview})
 
 #%% Excersice 1
 pprint.pprint("")
