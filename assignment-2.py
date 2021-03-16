@@ -18,8 +18,8 @@ import os
 import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
 
-#%% Enviroment
-# Nothing yet
+
+#%% Enviroment and Data imports
 
 #%% Excersice 1
 
