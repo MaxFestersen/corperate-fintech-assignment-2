@@ -62,36 +62,172 @@ for person in icoData:
 reviewDt = pd.DataFrame({'#review': icoDataFiltReviewNum,'Person ID': icoDataFiltPersonNum, 'Review':icoDataFiltReview})
 
 #%% Excersice 1
+# Forventningsafsnit
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
 
 #%% Excersice 2
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
 
 #%% Excersice 2 a
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 2 b
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 2 c
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 2 d
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
 #%% Excersice 2 d i
 
 #%% Excersice 2 d ii
 
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
+
+#%% Excersice 2 outro
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
+
+
 #%% Excersice 3
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
 
 #%% Excersice 3 part 1
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 3 part 2
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 3 part 3
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
 #%% Excersice 3 part 3 a
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 3 part 3 b
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 3 part 3 c
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
+# Udførelse af opgave
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
 
 #%% Excersice 3 part 3 d
+# Forventningsafsnit
+pprint.pprint("")
+
+# Matematiske udregninger
+pprint.pprint("")
+
 #%% Excersice 3 part 3 d i
 
 #%% Excersice 3 part 3 d ii
 
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
+
+
+#%% Excersice 3 part 3 outro
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
+
+#%% Excersice 3 outro
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
