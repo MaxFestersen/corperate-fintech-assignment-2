@@ -19,7 +19,7 @@ import pandas as pd
 import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
 from datetime import datetime # To format strings as dates
-
+import textstat # To get fog gunning values
 
 #%% Enviroment and Data imports
 os.chdir(os.path.dirname(os.path.realpath(__file__))) # Set dir
@@ -53,9 +53,11 @@ for person in icoData:
             if "review" in rating and len(rating["review"]) > 0:
                 reviewNum += 1 # Count valid review
                 # Save ratings review instance
-                icoDataFiltPersonNum.append(personNum)
-                icoDataFiltReviewNum.append(reviewNum)
-                icoDataFiltReview.append(rating['review'])
+                icoDataFiltPersonNum.append(personNum) # Person number for data validation
+                icoDataFiltReviewNum.append(reviewNum) # Review number as uniqe classification
+                icoDataFiltReview.append(rating['review']) # Review used in Exercise 2a-d and Exercise 3 part 1-3
+                # the team rating; the vision rating; the product rating; overall rating; amount raised; success (= dummy (1) if amount raised larger 0).
+                
     i+=1 # Increment instance counter
 
 # Format as dataframe
@@ -84,10 +86,27 @@ pprint.pprint("")
 # Matematiske udregninger
 pprint.pprint("")
 
-# Udførelse af opgave
+# Udregn polarity score
+sentimetsPolarity = []
+sentimetsSubjectivity = []
+for review in icoDataFiltReview: # For every review in the filtered reviews
+    tb = TextBlob(review) # Peform sentiment analasys
+    sentimetsPolarity.append(tb.sentiment[0]) # Get polarity score
+    sentimetsSubjectivity.append(tb.sentiment[0]) # Get subjectivity score
+
+# Tilføj til dataframe
+reviewDt["Polarity"] = sentimetsPolarity
+reviewDt["Subjectivity"] = sentimetsSubjectivity
+
+# Analyser tal
+reviewDtSemanticInfo = reviewDt[['Polarity', 'Subjectivity']].describe()
+#reviewDtInfo = reviewDtInfo.transpose()
+
+pprint.pprint(reviewDtSemanticInfo)
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
+
 
 #%% Excersice 2 b
 # Forventningsafsnit
@@ -96,7 +115,18 @@ pprint.pprint("")
 # Matematiske udregninger
 pprint.pprint("")
 
-# Udførelse af opgave
+# Få Fog gunning værdier
+fogValues = []
+for review in icoDataFiltReview: # For every review in the filtered reviews
+    fogValues.append(textstat.gunning_fog(review)) # Get and append fog index for review
+
+# Tilføj til dataframe
+reviewDt["Fog Index"] = fogValues
+
+# Analyser tal
+reviewDtFogInfo = reviewDt[['Fog Index']].describe()
+
+pprint.pprint(reviewDtFogInfo)
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
@@ -109,6 +139,8 @@ pprint.pprint("")
 pprint.pprint("")
 
 # Udførelse af opgave
+corrMatrix = reviewDt[['Polarity', 'Fog Index']].corr()
+# Missing from data: the team rating; the vision rating; the product rating; overall rating; amount raised; success (= dummy (1) if amount raised larger 0).
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
