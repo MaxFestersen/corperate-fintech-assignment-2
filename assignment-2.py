@@ -136,11 +136,13 @@ pprint.pprint("")
 
 # Matematiske udregninger
 pprint.pprint("")
+# Fog Index = 0.4 *(average # of words per sentence + 100 * percent of complex words)
 
 # Få Fog gunning værdier
 fogValues = []
 for review in icoDataFiltReview: # For every review in the filtered reviews
     fogValues.append(textstat.gunning_fog(review)) # Get and append fog index for review
+    #NOTE: Gunning fog is a vallid fog index, however, there are two vallid methods, fog index and gunning fog index
 
 # Tilføj til dataframe
 reviewDt["Fog Index"] = fogValues
