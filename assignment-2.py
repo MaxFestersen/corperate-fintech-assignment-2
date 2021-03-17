@@ -15,7 +15,7 @@ print('Emilie Bruun Therp, emthe15@student.sdu.dk')
 #%% Imports
 import os # To set dir
 import pprint # To print "stuff" pretty
-import pandas as pd
+import pandas as pd # To work with dataframes and math functions
 import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
 from datetime import datetime # To format strings as dates
