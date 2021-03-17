@@ -160,11 +160,18 @@ pprint.pprint("")
 pprint.pprint("")
 
 # Matematiske udregninger
-pprint.pprint("")
+pprint.pprint("corr funktionen fra pandas bruges til at lave datasættet om til en collelation matrix.")
 
 # Udførelse af opgave
-corrMatrix = reviewDt[['Polarity', 'Fog Index']].corr()
-# Missing from data: the team rating; the vision rating; the product rating; overall rating; amount raised; success (= dummy (1) if amount raised larger 0).
+corrMatrix = reviewDt[['Polarity',
+                       'Fog Index',
+                       'Team rating',
+                       'Vision rating',
+                       'Product rating',
+                       'Overall Rating',
+                       'Amount Raised',
+                       'Success']].corr()
+                         # Missing from data: the team rating; the vision rating; the product rating; overall rating; amount raised; success (= dummy (1) if amount raised larger 0).
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
