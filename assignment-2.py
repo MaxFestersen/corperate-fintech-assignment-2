@@ -16,6 +16,8 @@ print('Emilie Bruun Therp, emthe15@student.sdu.dk')
 import os # To set dir
 import pprint # To print "stuff" pretty
 import pandas as pd # To work with dataframes and math functions
+import numpy as np # to work with math
+import statsmodels.api as sm # To use OLS
 import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
 from datetime import datetime # To format strings as dates
@@ -185,6 +187,33 @@ pprint.pprint("")
 
 # Udførelse af opgave
 #%% Excersice 2 d i
+# Run an OLS regression of the amount raised on polarity score,
+# Fog index, the team rating, the vision rating, the product rating,
+# overall rating. Interpret your results.
+
+# OLS Regression
+def ols_amountRaisedOn(y): # Give reponse value - does ols with amount raised as predictor - returns fitted ols estimate
+    X = sm.add_constant(reviewDt[["Amount Raised"]]) # predictor
+    est = sm.OLS(y, X)
+    est = est.fit()
+    return est
+# > OLS:  Amount raised on polarity score
+dis = ols_amountRaisedOn(reviewDt["Polarity"])
+print(dis.summary())
+
+# > OLS:  Amount raised on fog index
+
+# > OLS:  Amount raised on the team rating
+
+# > OLS:  Amount raised on the vision rating
+
+# > OLS:  Amount raised on the product rating
+
+# > OLS:  Amount raised on overall rating
+
+# Interpretation/Diskusion af øknomiske aspekter af resultatet
+pprint.pprint("")
+
 
 #OLS regression
 #%% Excersice 2 d ii
