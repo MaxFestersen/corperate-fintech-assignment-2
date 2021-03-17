@@ -32,13 +32,20 @@ with open(filename) as json_data:
 #%% Formatting data
 icoData = [x for x in icoData if not len(x) == 1]  # Filter list - remove empty dirs
 
-icoDataFiltPersonNum = []
-icoDataFiltReview = []
-icoDataFiltReviewNum = []
+icoDataFiltPersonNum = [] # For person instance
+icoDataFiltReview = [] # For reviews
+icoDataFiltReviewNum = [] # For a unique identifier for reviews
+icoDataFiltTeamRating = [] # The team rating;
+icoDataFiltVisionRating = [] # The vision rating;
+icoDataFiltProductRating = [] # The product rating;
+icoDataFiltOverallRating = [] # Overall rating;
+icoDataFiltAmountRaised = [] # Amount raised;
+icoDataFiltSuccess = [] # Successes
 
 i = 0
 personNum = 0
 reviewNum = 0
+
 # Loop all of icoData
 for person in icoData:
     personNum += 1 # Count next person
@@ -56,12 +63,26 @@ for person in icoData:
                 icoDataFiltPersonNum.append(personNum) # Person number for data validation
                 icoDataFiltReviewNum.append(reviewNum) # Review number as uniqe classification
                 icoDataFiltReview.append(rating['review']) # Review used in Exercise 2a-d and Exercise 3 part 1-3
-                # the team rating; the vision rating; the product rating; overall rating; amount raised; success (= dummy (1) if amount raised larger 0).
-                
+                icoDataFiltTeamRating.append(rating["team"]) # Team rating from review
+                icoDataFiltVisionRating.append(rating["vision"]) # Vision rating from review
+                icoDataFiltProductRating.append(rating["product"]) # Product rating from review
+                icoDataFiltOverallRating.append(person["rating"]) # Overall rating from person (NOTE: NOT REVIEW LEVEL)
+                amountRaised = person["finance"]["raised"] # Amount raised
+                icoDataFiltAmountRaised.append(amountRaised) # Append amount raised
+                icoDataFiltSuccess.append(1 if amountRaised > 0 else 0) # Success (= dummy (1) if amount raised larger 0).
     i+=1 # Increment instance counter
 
 # Format as dataframe
-reviewDt = pd.DataFrame({'#review': icoDataFiltReviewNum,'Person ID': icoDataFiltPersonNum, 'Review':icoDataFiltReview})
+reviewDt = pd.DataFrame({   '#review': icoDataFiltReviewNum,
+                            'Person ID': icoDataFiltPersonNum,
+                            'Review':icoDataFiltReview,
+                            'Team rating':icoDataFiltTeamRating,
+                            'Vision rating':icoDataFiltVisionRating,
+                            'Product rating':icoDataFiltProductRating,
+                            'Overall Rating':icoDataFiltOverallRating,
+                            'Amount Raised':icoDataFiltAmountRaised,
+                            'Success':icoDataFiltSuccess
+                         })
 
 #%% Excersice 1
 # Forventningsafsnit
