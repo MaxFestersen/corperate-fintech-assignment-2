@@ -155,6 +155,7 @@ pprint.pprint("")
 # Udførelse af opgave
 #%% Excersice 2 d i
 
+#OLS regression
 #%% Excersice 2 d ii
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
