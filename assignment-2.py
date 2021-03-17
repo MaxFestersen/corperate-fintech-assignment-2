@@ -102,10 +102,10 @@ pprint.pprint("")
 
 #%% Excersice 2 a
 # Forventningsafsnit
-pprint.pprint("")
+pprint.pprint("Forventning om ligevægt mellem positiv og negative ord.")
 
 # Matematiske udregninger
-pprint.pprint("")
+pprint.pprint("Describe funktionen fra pandas anvendes til at retunere en oversigt der indeholder, antal, mean, standard deviation, min, 25%, median, 75% og max værdi for polarity index. Sd og 75% er ikke et krav, men anvnedt til analyse delen uanset.")
 
 # Udregn polarity score
 sentimetsPolarity = []
@@ -113,15 +113,16 @@ sentimetsSubjectivity = []
 for review in icoDataFiltReview: # For every review in the filtered reviews
     tb = TextBlob(review) # Peform sentiment analasys
     sentimetsPolarity.append(tb.sentiment[0]) # Get polarity score
-    sentimetsSubjectivity.append(tb.sentiment[0]) # Get subjectivity score
+    sentimetsSubjectivity.append(tb.sentiment[1]) # Get subjectivity score
 
 # Tilføj til dataframe
 reviewDt["Polarity"] = sentimetsPolarity
 reviewDt["Subjectivity"] = sentimetsSubjectivity
 
 # Analyser tal
-reviewDtSemanticInfo = reviewDt[['Polarity', 'Subjectivity']].describe()
-#reviewDtInfo = reviewDtInfo.transpose()
+reviewDtSemanticInfo = reviewDt[['Polarity']].describe()
+#median = reviewDt[['Polarity']].median()
+#reviewDtSemanticInfo = reviewDtSemanticInfo.transpose()
 
 pprint.pprint(reviewDtSemanticInfo)
 
