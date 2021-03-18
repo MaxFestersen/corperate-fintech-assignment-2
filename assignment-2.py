@@ -217,8 +217,19 @@ pprint.pprint(olsResult)
 pprint.pprint("")
 
 
-#OLS regression
+# Logit regression
 #%% Excersice 2 d ii
+# 1 Import - done
+# 2 Data - done
+#reviewDt
+# 3 Create model
+#x = reviewDt[["Polarity"]]
+x = reviewDt[["Polarity", "Fog Index","Team rating", "Vision rating", "Product rating", "Overall Rating"]]
+y = reviewDt["Success"]
+model = sm.Logit(y,x)
+result=model.fit()
+print(result.summary())
+# 4 Evaluation
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
