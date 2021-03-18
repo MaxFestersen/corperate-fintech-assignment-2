@@ -175,6 +175,7 @@ corrMatrix = reviewDt[['Polarity',
                        'Amount Raised',
                        'Success']].corr()
                          # Missing from data: the team rating; the vision rating; the product rating; overall rating; amount raised; success (= dummy (1) if amount raised larger 0).
+pprint.pprint(corrMatrix)
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
