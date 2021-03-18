@@ -22,6 +22,7 @@ import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
 from datetime import datetime # To format strings as dates
 import textstat # To get fog gunning values
+#from matplotlib.pylab import plt # To plot plots
 
 #%% Enviroment and Data imports
 os.chdir(os.path.dirname(os.path.realpath(__file__))) # Set dir
@@ -194,24 +195,23 @@ pprint.pprint("")
 # overall rating. Interpret your results.
 
 # OLS Regression
-def ols_amountRaisedOn(y): # Give reponse value - does ols with amount raised as predictor - returns fitted ols estimate
-    X = sm.add_constant(reviewDt[["Amount Raised"]]) # predictor
-    est = sm.OLS(y, X)
-    est = est.fit()
-    return est
-# > OLS:  Amount raised on polarity score
-dis = ols_amountRaisedOn(reviewDt["Polarity"])
-print(dis.summary())
+def ols_amountRaisedOn(X): # Give predictor value - does ols with amount raised as predictor - returns fitted ols estimate
+    X = sm.add_constant(X) # add constant to predictor
+    y = reviewDt[["Amount Raised"]] # response value
+    est = sm.OLS(y, X) # Create model from response, y and predictor X
+    est = est.fit() # fitting model
+    #X_prime = np.linspace(X.iloc[:, 1].min(), X.iloc[:, 1].max(), 100)[:, np.newaxis]
+    #X_prime = sm.add_constant(X_prime) 
+    #y_hat = est.predict(X_prime)
+    #fig = plt.xlabel("Amount Raised") 
+    #fig = plt.ylabel(X.columns[1]) 
+    #fig = plt.plot(X_prime[:, 1], y_hat, 'r', alpha=0.9)
+    #plt.show()
+    return est.summary() # return params
 
-# > OLS:  Amount raised on fog index
-
-# > OLS:  Amount raised on the team rating
-
-# > OLS:  Amount raised on the vision rating
-
-# > OLS:  Amount raised on the product rating
-
-# > OLS:  Amount raised on overall rating
+# > OLS:  Amount raised on polarity score, fog index, the team rating, the vision rating, the product rating, overall rating
+olsResult = ols_amountRaisedOn(reviewDt[["Polarity", "Fog Index","Team rating", "Vision rating", "Product rating", "Overall Rating"]])
+pprint.pprint(olsResult)
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("")
