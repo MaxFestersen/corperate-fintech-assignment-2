@@ -104,7 +104,8 @@ pprint.pprint("")
 
 #%% Excersice 2 a
 # Forventningsafsnit
-pprint.pprint("Forventning om ligevægt mellem positiv og negative ord.")
+pprint.pprint("Median and 50% quartile is effectivly the same. We asume that the exercise needs 75% quartile instead of a redundant median. This assumtion is for all of the assignment.")
+pprint.pprint("")
 
 # Matematiske udregninger
 pprint.pprint("Describe funktionen fra pandas anvendes til at retunere en oversigt der indeholder, antal, mean, standard deviation, min, 25%, median, 75% og max værdi for polarity index. Sd og 75% er ikke et krav, men anvnedt til analyse delen uanset.")
