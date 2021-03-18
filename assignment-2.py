@@ -146,7 +146,6 @@ pprint.pprint("")
 fogValues = []
 for review in icoDataFiltReview: # For every review in the filtered reviews
     fogValues.append(textstat.gunning_fog(review)) # Get and append fog index for review
-    #NOTE: Gunning fog is a vallid fog index, however, there are two vallid methods, fog index and gunning fog index
 
 # Tilføj til dataframe
 reviewDt["Fog Index"] = fogValues
