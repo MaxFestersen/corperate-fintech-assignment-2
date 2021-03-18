@@ -16,13 +16,16 @@ print('Emilie Bruun Therp, emthe15@student.sdu.dk')
 import os # To set dir
 import pprint # To print "stuff" pretty
 import pandas as pd # To work with dataframes and math functions
-import numpy as np # to work with math
+#import numpy as np # to work with math
 import statsmodels.api as sm # To use OLS
 import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
 from datetime import datetime # To format strings as dates
 import textstat # To get fog gunning values
 #from matplotlib.pylab import plt # To plot plots
+#from sklearn.linear_model import LogisticRegression
+#from sklearn.metrics import classification_report, confusion_matrix
+import statsmodels.api as sm
 
 #%% Enviroment and Data imports
 os.chdir(os.path.dirname(os.path.realpath(__file__))) # Set dir
