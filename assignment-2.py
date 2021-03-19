@@ -106,10 +106,8 @@ pprint.pprint(
 
 
 #%% Excersice 2
-# Forventningsafsnit
-# mangler?
 
-#%% Excersice 2 a
+# Excersice 2 a
 # Forventningsafsnit
 pprint.pprint("Median and 50% quartile is effectivly the same. We asume that the exercise needs 75% quartile instead of a redundant median. This assumtion is for all of the assignment.")
 pprint.pprint([
@@ -224,9 +222,6 @@ pprint.pprint([
 
 #%% Excersice 2 d
 
-# Matematiske udregninger
-#pprint.pprint("") Mangler?
-
 # Udførelse af opgave
 #%% Excersice 2 d i
 # Forventningsafsnit
@@ -279,24 +274,14 @@ print(result.summary())
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
 pprint.pprint("Hence, we see that vision rating and product rating seems to be the only relevant factors for success, however all but Fog index are relevant for the amount raised.")
 
-#%% Excersice 2 outro
-# Interpretation/Diskusion af øknomiske aspekter af resultatet
-#pprint.pprint("") Mangler?
-
 
 #%% Excersice 3
 # Forventningsafsnit
-pprint.pprint("")
-
-# Matematiske udregninger
-pprint.pprint("")
+pprint.pprint("We expect the results from randomly selected data from our own classifiers result to be similar to the result from Textblob, but we do expect our trained data to be more precice.")
 
 # Udførelse af opgave
 
 #%% Excersice 3 part 1
-# Forventningsafsnit
-pprint.pprint("")
-
 # Matematiske udregninger
 pprint.pprint("")
 
@@ -306,9 +291,6 @@ pprint.pprint("")
 pprint.pprint("")
 
 #%% Excersice 3 part 2
-# Forventningsafsnit
-pprint.pprint("")
-
 # Matematiske udregninger
 pprint.pprint("")
 
@@ -318,52 +300,14 @@ pprint.pprint("")
 pprint.pprint("")
 
 #%% Excersice 3 part 3
-# Forventningsafsnit
-pprint.pprint("")
 
-# Matematiske udregninger
-pprint.pprint("")
-
-#%% Excersice 3 part 3 a
-# Forventningsafsnit
-pprint.pprint("")
-
-# Matematiske udregninger
-pprint.pprint("")
-
-# Udførelse af opgave
-
-# Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
+# Excersice 3 part 3 a
 
 #%% Excersice 3 part 3 b
-# Forventningsafsnit
-pprint.pprint("")
-
-# Matematiske udregninger
-pprint.pprint("")
-
-# Udførelse af opgave
-
-# Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
 
 #%% Excersice 3 part 3 c
-# Forventningsafsnit
-pprint.pprint("")
-
-# Matematiske udregninger
-pprint.pprint("")
-
-# Udførelse af opgave
-
-# Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
 
 #%% Excersice 3 part 3 d
-# Forventningsafsnit
-pprint.pprint("")
-
 # Matematiske udregninger
 pprint.pprint("")
 
@@ -371,13 +315,6 @@ pprint.pprint("")
 
 #%% Excersice 3 part 3 d ii
 
-# Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
-
-
-#%% Excersice 3 part 3 outro
-# Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
 
 #%% Excersice 3 outro
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
