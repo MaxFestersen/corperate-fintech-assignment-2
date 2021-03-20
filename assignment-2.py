@@ -614,22 +614,22 @@ print("The accuracy of the trained model is: ", round(reviewDtClaccuracyPercent*
 pprint.pprint("The accuracy of the training model is relatively low. This could be due the complexity of the reviews posibly has caused human error and a machine with confusing instructions.")
 
 #%% Excersice 3 part 3
-
 # Excersice 3 part 3 a
+# Udregn polarity score
+sentimetsPolarityCl = []
+sentimetsSubjectivityCl = []
+for review in icoDataFiltReview: # For every review in the filtered reviews
+    tb = TextBlob(review, classifier=cl) # Peform sentiment analasys
+    sentimetsPolarityCl.append(tb.sentiment[0]) # Get polarity score
+    sentimetsSubjectivityCl.append(tb.sentiment[1]) # Get subjectivity score
 
-#%% Excersice 3 part 3 b
+# Tilføj til dataframe
+reviewDt["PolarityCL"] = sentimetsPolarityCl
+reviewDt["SubjectivityCL"] = sentimetsSubjectivityCl
 
-#%% Excersice 3 part 3 c
+# Analyser tal
+reviewDtCLSemanticInfo = reviewDt[['PolarityCL']].describe()
 
-#%% Excersice 3 part 3 d
-# Matematiske udregninger
-pprint.pprint("")
-
-#%% Excersice 3 part 3 d i
-
-#%% Excersice 3 part 3 d ii
-
-
-#%% Excersice 3 outro
+pprint.pprint(reviewDtCLSemanticInfo)
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
+pprint.pprint("The polarity scores with with our classifier are exactly the same as Textblob's classifier.")
