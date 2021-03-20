@@ -16,10 +16,11 @@ print('Emilie Bruun Therp, emthe15@student.sdu.dk')
 import os # To set dir
 import pprint # To print "stuff" pretty
 import pandas as pd # To work with dataframes and math functions
-#import numpy as np # to work with math
+import numpy as np # to work with math
 import statsmodels.api as sm # To use OLS
 import json # To work with json files
 from textblob import TextBlob # To do Naïve Bayes classifification
+from textblob.classifiers import NaiveBayesClassifier
 from datetime import datetime # To format strings as dates
 import textstat # To get fog gunning values
 #from matplotlib.pylab import plt # To plot plots
@@ -28,12 +29,13 @@ import textstat # To get fog gunning values
 import statsmodels.api as sm
 
 #%% Enviroment and Data imports
-os.chdir(os.path.dirname(os.path.realpath(__file__))) # Set dir
-filename = 'icoData_19092018.json'
+# Set dir
+os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
+# Load data
+filename = 'icoData_19092018.json'
 with open(filename) as json_data:
     icoData = json.load(json_data) #Load data into a list
-
 
 #%% Formatting data
 icoData = [x for x in icoData if not len(x) == 1]  # Filter list - remove empty dirs
@@ -279,25 +281,337 @@ pprint.pprint("Hence, we see that vision rating and product rating seems to be t
 # Forventningsafsnit
 pprint.pprint("We expect the results from randomly selected data from our own classifiers result to be similar to the result from Textblob, but we do expect our trained data to be more precice.")
 
-# Udførelse af opgave
 
 #%% Excersice 3 part 1
-# Matematiske udregninger
-pprint.pprint("")
-
-# Udførelse af opgave
-
-# Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
+# Selecting 150 random reviews
+reviewDtSample = reviewDt.sample(n=150, random_state=666)
+#reviewDtSample["n"] =   range(150)
+reviewDtSample["class"]  = [
+                                "negative", #0
+                                "negative", #1
+                                "neutral", #2
+                                "neutral", #3
+                                "positive", #4
+                                "positive", #5
+                                "negative", #6
+                                "neutral", #7
+                                "negative", #8
+                                "positive", # 9
+                                "positive", #10
+                                "neutral", #11
+                                "positive", #12
+                                "neutral", #13
+                                "negative", #14
+                                "neutral", #15
+                                "positive", # 16
+                                "positive", #17
+                                "positive", #18
+                                "positive", #19
+                                "positive", #20
+                                "positive", #21
+                                "positive", #22
+                                "negative", #23
+                                "positive", #24
+                                "neutral", #25
+                                "neutral", #26
+                                "negative", #27
+                                "positive", #28
+                                "positive", # 29
+                                "positive", #30
+                                "neutral", #31
+                                "neutral", #32
+                                "positive", #33
+                                "positive", #34
+                                "positive", #35
+                                "neutral", #36
+                                "positive", #37
+                                "positive", #38
+                                "positive", #39
+                                "positive", #40
+                                "positive", #41
+                                "positive", #42
+                                "positive", #43
+                                "neutral", #44
+                                "positive", #45
+                                "negative", #46
+                                "neutral", #47
+                                "positive", #48
+                                "negative", #49
+                                "negative", #50
+                                "positive", #51
+                                "positive", #52
+                                "positive", #53
+                                "neutral", #54
+                                "positive", #55
+                                "positive", #56
+                                "positive", #57
+                                "negative", #58
+                                "negative", #59
+                                "positive", #60
+                                "neutral", #61
+                                "negative", #62
+                                "positive", #63
+                                "negative", #64
+                                "positive", #65
+                                "positive", #66
+                                "positive", #67
+                                "negative", #68
+                                "positive", #69
+                                "negative", #70
+                                "positive", #71
+                                "positive", #72
+                                "neutral", #73
+                                "positive", #74
+                                "positive", #75
+                                "positive", #76
+                                "neutral", #77
+                                "neutral", #78
+                                "positive", #79
+                                "neutral", #80
+                                "negative", #81
+                                "positive", #82
+                                "negative", #83
+                                "neutral", #84
+                                "negative", #85
+                                "negative", #86
+                                "negative", #87
+                                "positive", #88
+                                "negative", #89
+                                "positive", #90
+                                "positive", #91
+                                "positive", #92
+                                "negative", #93
+                                "neutral", #94
+                                "positive", #95
+                                "positive", #96
+                                "positive", #97
+                                "positive", #98
+                                "neutral", #99
+                                "positive", #100
+                                "positive", #101
+                                "positive", #102
+                                "positive", #103
+                                "positive", #104
+                                "negative", #105
+                                "neutral", #106
+                                "negative", #107
+                                "positive", #108
+                                "positive", #109
+                                "positive", #110
+                                "positive", #111
+                                "negative", #112
+                                "positive", #113
+                                "positive", #114
+                                "positive", #115
+                                "negative", #116
+                                "positive", #117
+                                "negative", #118
+                                "negative", #119
+                                "negative", #120
+                                "positive", #121
+                                "positive", #122
+                                "positive", #123
+                                "positive", #124
+                                "positive", #125
+                                "negative", #126
+                                "positive", #127
+                                "positive", #128
+                                "positive", #129
+                                "positive", #130
+                                "positive", #131
+                                "positive", #132
+                                "negative", #133
+                                "negative", #134
+                                "negative", #135
+                                "positive", #136
+                                "positive", #137
+                                "positive", #138
+                                "negative", #139
+                                "positive", #140
+                                "neutral", #141
+                                "positive", #142
+                                "positive", #143
+                                "positive", #144
+                                "negative", #145
+                                "positive", #146
+                                "neutral", #147
+                                "positive", #148
+                                "positive" #149
+                            ]
+reviewDtSample["classOrrScore"]  = [#-1 = negative | 0=neutral | 1 = positive
+                                -1, #0
+                                -1, #1
+                                0, #2
+                                0, #3
+                                1, #4
+                                1, #5
+                                -1, #6
+                                0, #7
+                                -1, #8
+                                1, # 9
+                                1, #10
+                                0, #11
+                                1, #12
+                                0, #13
+                                -1, #14
+                                0, #15
+                                1, # 16
+                                1, #17
+                                1, #18
+                                1, #19
+                                1, #20
+                                1, #21
+                                1, #22
+                                -1, #23
+                                1, #24
+                                0, #25
+                                0, #26
+                                -1, #27
+                                1, #28
+                                1, # 29
+                                1, #30
+                                0, #31
+                                0, #32
+                                1, #33
+                                1, #34
+                                1, #35
+                                0, #36
+                                1, #37
+                                1, #38
+                                1, #39
+                                1, #40
+                                1, #41
+                                1, #42
+                                1, #43
+                                0, #44
+                                1, #45
+                                -1, #46
+                                0, #47
+                                1, #48
+                                -1, #49
+                                -1, #50
+                                1, #51
+                                1, #52
+                                1, #53
+                                0, #54
+                                1, #55
+                                1, #56
+                                1, #57
+                                -1, #58
+                                -1, #59
+                                1, #60
+                                0, #61
+                                -1, #62
+                                1, #63
+                                -1, #64
+                                1, #65
+                                1, #66
+                                1, #67
+                                -1, #68
+                                1, #69
+                                -1, #70
+                                1, #71
+                                1, #72
+                                0, #73
+                                1, #74
+                                1, #75
+                                1, #76
+                                0, #77
+                                0, #78
+                                1, #79
+                                0, #80
+                                -1, #81
+                                1, #82
+                                -3, #83
+                                0, #84
+                                -1, #85
+                                -1, #86
+                                -1, #87
+                                1, #88
+                                -1, #89
+                                1, #90
+                                1, #91
+                                1, #92
+                                -1, #93
+                                0, #94
+                                1, #95
+                                1, #96
+                                1, #97
+                                1, #98
+                                0, #99
+                                1, #100
+                                1, #101
+                                1, #102
+                                1, #103
+                                1, #104
+                                -1, #105
+                                0, #106
+                                -1, #107
+                                1, #108
+                                1, #109
+                                1, #110
+                                1, #111
+                                -1, #112
+                                1, #113
+                                1, #114
+                                1, #115
+                                -1, #116
+                                1, #117
+                                -1, #118
+                                -1, #119
+                                -1, #120
+                                1, #121
+                                1, #122
+                                1, #123
+                                1, #124
+                                1, #125
+                                -1, #126
+                                1, #127
+                                1, #128
+                                1, #129
+                                1, #130
+                                1, #131
+                                1, #132
+                                -1, #133
+                                -1, #134
+                                -1, #135
+                                1, #136
+                                1, #137
+                                1, #138
+                                -1, #139
+                                1, #140
+                                0, #141
+                                1, #142
+                                1, #143
+                                1, #144
+                                -1, #145
+                                1, #146
+                                0, #147
+                                1, #148
+                                1 #149
+                            ]
+reviewDtSampleTraining = reviewDtSample.iloc[0:99]
+reviewDtSampleTest = reviewDtSample.iloc[100:149]
 
 #%% Excersice 3 part 2
-# Matematiske udregninger
-pprint.pprint("")
+# Train classifier using textblob
+cl = NaiveBayesClassifier(reviewDtSampleTraining[["Review", "class"]].values.tolist()) # Train on training set
 
-# Udførelse af opgave
+# Test on testdata
+reviewDtSampleTests = []
+
+for review in reviewDtSampleTest["Review"].values:
+    reviewDtSampleTests.append(cl.classify(review))
+
+reviewDtSampleTest["classClScore"] = reviewDtSampleTests
+
+reviewDtClaccuracy = np.where(reviewDtSampleTest["classClScore"] == reviewDtSampleTest["class"], 1, 0)
+
+reviewDtClaccuracyPercent = sum(reviewDtClaccuracy)/len(reviewDtClaccuracy)
 
 # Interpretation/Diskusion af øknomiske aspekter af resultatet
-pprint.pprint("")
+print("The accuracy of the trained model is: ", round(reviewDtClaccuracyPercent*100, 2), "%")
+pprint.pprint("The accuracy of the training model is relatively low. This could be due the complexity of the reviews posibly has caused human error and a machine with confusing instructions.")
 
 #%% Excersice 3 part 3
 
