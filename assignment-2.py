@@ -286,8 +286,8 @@ pprint.pprint("We expect the results from randomly selected data from our own cl
 reviewDtSample = reviewDt.sample(n=150, random_state=666)
 #reviewDtSample["n"] =   range(150)
 reviewDtSample["class"]=["negative", "negative", "neutral", "neutral", "positive", "positive", "negative", "neutral", "negative", "positive", "positive", "neutral", "positive", "neutral", "negative", "neutral", "positive", "positive", "positive", "positive", "positive", "positive", "positive", "negative", "positive", "neutral", "neutral", "negative", "positive", "positive", "positive", "neutral", "neutral", "positive", "positive", "positive", "neutral", "positive", "positive", "positive", "positive", "positive", "positive", "positive", "neutral", "positive", "negative", "neutral", "positive", "negative", "negative", "positive", "positive", "positive", "neutral", "positive", "positive", "positive", "negative", "negative", "positive", "neutral", "negative", "positive", "negative", "positive", "positive", "positive", "negative", "positive", "negative", "positive", "positive", "neutral", "positive", "positive", "positive", "neutral", "neutral", "positive", "neutral", "negative", "positive", "negative", "neutral", "negative", "negative", "negative", "positive", "negative", "positive", "positive", "positive", "negative", "neutral", "positive", "positive", "positive", "positive", "neutral", "positive", "positive", "positive", "positive", "positive", "negative", "neutral", "negative", "positive", "positive", "positive", "positive", "negative", "positive", "positive", "positive", "negative", "positive", "negative", "negative", "negative", "positive", "positive", "positive", "positive", "positive", "negative", "positive", "positive", "positive", "positive", "positive", "positive", "negative", "negative", "negative", "positive", "positive", "positive", "negative", "positive", "neutral", "positive", "positive", "positive", "negative", "positive", "neutral", "positive", "positive" ]
-reviewDtSampleTraining = reviewDtSample.iloc[0:99]
-reviewDtSampleTest = reviewDtSample.iloc[100:149]
+reviewDtSampleTraining = reviewDtSample.iloc[0:99].copy(deep=False)
+reviewDtSampleTest = reviewDtSample.iloc[100:149].copy(deep=False)
 
 #%% Excersice 3 part 2
 # Train classifier using textblob
@@ -299,9 +299,9 @@ reviewDtSampleTests = []
 for review in reviewDtSampleTest["Review"].values:
     reviewDtSampleTests.append(cl.classify(review))
 
-reviewDtSampleTest["classClScore"] = reviewDtSampleTests
+reviewDtSampleTest.__setitem__('classCl', reviewDtSampleTests)
 
-reviewDtClaccuracy = np.where(reviewDtSampleTest["classClScore"] == reviewDtSampleTest["class"], 1, 0)
+reviewDtClaccuracy = np.where(reviewDtSampleTest["classCl"] == reviewDtSampleTest["class"], 1, 0)
 
 reviewDtClaccuracyPercent = sum(reviewDtClaccuracy)/len(reviewDtClaccuracy)
 
